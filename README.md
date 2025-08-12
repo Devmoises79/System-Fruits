@@ -1,115 +1,118 @@
 # 🍎 SystemFruits
 
-Sistema de compras de frutas em terminal com geração de recibo em PDF. Idealizado para simular uma experiência de e-commerce simples com funcionalidades como login, carrinho de compras, cupons de desconto e formas de pagamento variadas.
+Sistema de compras de frutas via terminal, com autenticação de usuário, gerenciamento de estoque, aplicação de cupons, escolha de forma de pagamento e geração automática de recibo em PDF. Ideal para simular um e-commerce simples com fluxos reais de compra.
+
+---
 
 ## 📋 Funcionalidades
 
-- ✅ Login com usuário e senha
-- 🛒 Carrinho de compras com adição, edição e remoção de itens
-- 💸 Aplicação de cupons de desconto e pagamento com ajuste por método
-- 🧾 Geração automática de recibo em PDF com detalhes da compra
-- 📊 Sistema com cálculo de subtotal, desconto, juros e total final
+- ✅ Login seguro com usuário e senha (fluxo reinicia em caso de erro)
+- 🛒 Carrinho de compras com adição, edição e remoção de frutas
+- 📦 Controle dinâmico de estoque atualizado durante a compra
+- 💸 Aplicação de cupons de desconto (ex: DESCONTO10, DESCONTO20)
+- 💳 Formas de pagamento: Pix (5% de desconto), Crédito (10% de acréscimo), Débito (sem alteração)
+- 🧾 Geração automática de recibo em PDF detalhando a compra
+- 🧪 Testes automatizados para validação da autenticação do sistema
+
+---
 
 ## 🖥️ Tecnologias Utilizadas
 
-- **Python 3.x**
-- **ReportLab** – geração de arquivos PDF
+- **Python 3.x**  
+- **ReportLab** – para geração dos arquivos PDF  
+- **unittest** – framework para testes automatizados (built-in no Python)
+
+---
 
 ## 🚀 Como Executar
 
-1. **Clone este repositório:**
+1. Clone o repositório:
 
-   ```bash
-   git clone https://github.com/seu-usuario/SystemFruits.git
-   cd SystemFruits
-   ```
+```bash
+git clone https://github.com/Devmoises79/System-Fruits.git
+cd System-Fruits
+```
+
 - Instale as dependências:
 
 ```bash
 pip install reportlab
 ```
 
-- Execute o sistema:
+Execute o sistema:
 
 ```bash
-python systemfruits.py
+
+python frutas.py
 ```
 
-- O recibo será salvo como recibo_compra.pdf.
+- Faça login com as credenciais válidas:
 
-## 🧠 Fluxo do Sistema
-** Usuário realiza login com credenciais válidas.
+* Usuário: Admin01 | Senha: Adm123
 
-** Escolhe as frutas e adiciona ao carrinho.
+* Usuário: User01 | Senha: User123
 
-** Pode editar/remover frutas antes de finalizar.
+* Siga o fluxo para adicionar frutas ao carrinho, aplicar cupom, escolher forma de pagamento e gerar recibo.
 
-** Aplica cupons, escolhe forma de pagamento e finaliza compra.
-
-** Um recibo é gerado automaticamente com todos os detalhes.
-
-## 🧾 Exemplo de Recibo Gerado
-
-===============================
-      RECIBO DE COMPRA
-        SYSTEMFRUITS
-===============================
-
-Cliente: admin
-Data: 28/07/2025
-Hora: 11:42
-
-Itens Comprados:
-- Maçã: 3 x R$ 2.00 = R$ 6.00
-- Banana: 2 x R$ 1.50 = R$ 3.00
-- Morango: 1 x R$ 4.00 = R$ 4.00
-
--------------------------------
-Subtotal: R$ 13.00
-Desconto (Cupom: BEMVINDO10): -R$ 1.30
-Juros (Cartão de crédito): +R$ 0.65
--------------------------------
-Total a Pagar: **R$ 12.35**
-Forma de Pagamento: Cartão de crédito
-
--------------------------------
-Obrigado por comprar conosco!
-Volte sempre! 
-===============================
-
-
-
-## 🎯 Objetivos do Projeto
-Este projeto foi criado com fins didáticos para praticar:
-
-- Lógica de programação
-
-- Manipulação de arquivos PDF com Python
-
-- Estruturação de sistemas de terminal com múltiplos fluxos
-
-- Princípios básicos de controle de estoque e automação de recibos
-
-## 🔐 Login de Teste
-** Usuário: admin
-
-** Senha: 1234
-
-
-
-## 📂 Estrutura de Arquivos
+# 🧪 Rodando os Testes Automatizados
+Para validar a autenticação, rode:
 
 ```bash
-SystemFruits/
-├── systemfruits.py
-├── recibo_compra.pdf
-├── README.md
-└── requirements.txt
+python -m unittest test.py
 ```
 
+* Certifique-se de que o arquivo test.py está no mesmo diretório e que as funções de autenticação estão importáveis para os testes.
 
-👨‍💻 Autor
-Desenvolvido por [Moisés/github.com/Devmoises79].
+# 🧠 Fluxo do Sistema
+- Solicita usuário e senha (fluxo reinicia em caso de erro)
 
-📃 Licença
-Este projeto está sob a licença MIT.
+- Mostra frutas disponíveis e permite adicionar ao carrinho
+
+- Permite editar e remover itens do carrinho
+
+- Aplica cupom de desconto se informado
+
+- Solicita forma de pagamento e aplica desconto ou acréscimo
+
+- Gera recibo detalhado em PDF com resumo da compra
+
+# 🧾 Exemplo de Recibo Gerado
+
+```ruby
+Recibo de Compra - SystemFruits
+
+Cliente: Admin01
+Itens comprados:
+- Maçã: 3 x R$ 4.00 = R$ 12.00
+- Banana: 2 x R$ 5.00 = R$ 10.00
+
+Subtotal: R$ 22.00
+Desconto aplicado: R$ 2.20
+Ajuste (Pix): -R$ 0.99
+Total Final: R$ 18.81
+```
+
+* Obrigado por comprar no SystemFruits!
+
+# 📂 Estrutura do Projeto
+
+```bash
+System-Fruits/
+├── frutas.py             # Código principal do sistema
+├── test.py  # Testes automatizados para autenticação
+├── recibo_<cliente>.pdf  # Recibos gerados automaticamente
+├── README.md             # Documentação do projeto     
+```
+
+#🔐 Credenciais de Teste
+
+* Usuário	Senha
+
+- Admin01	Adm123
+- User01	User123
+
+# 👨‍💻 Autor
+* Desenvolvido por Moisés.
+
+# 📃 Licença
+* Este projeto está sob a licença MIT.
