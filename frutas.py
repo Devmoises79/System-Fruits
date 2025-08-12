@@ -4,11 +4,16 @@ from reportlab.pdfgen import canvas
 # ---------------------- Dados de Login ----------------------
 print("------ Bem-vindo ao SystemFruits ------")
 
-senha = input("Digite a senha: ")
+
 usuario = input("Agora, digite o nome de usuário: ")
+senha = input("Digite a senha: ")
 
 if (usuario == "Admin01" and senha == "Adm123") or (usuario == "User01" and senha == "User123"):
     print("Acesso autorizado!\n")
+else: 
+    print("Usuario inválido ou senha incorreta. Tente novamente.")
+    exit()
+
     
     # ---------------------- Função para escolher frutas ----------------------
     def escolher_frutas():
@@ -159,5 +164,4 @@ if (usuario == "Admin01" and senha == "Adm123") or (usuario == "User01" and senh
     else:
         print("Nenhum item no carrinho. Compra cancelada.")
 
-else:
-    print("Acesso negado. Tente novamente.")
+    print("\nObrigado por comprar no SystemFruits!")
